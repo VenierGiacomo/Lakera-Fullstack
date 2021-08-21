@@ -11,7 +11,7 @@
 /node_modules
 
 # assets
-/assets
+src/assets
 
 # profiling files
 chrome-profiler-events*.json
