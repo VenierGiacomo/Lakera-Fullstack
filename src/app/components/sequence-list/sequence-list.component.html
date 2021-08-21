@@ -1,0 +1,128 @@
+<div class="dashboard" #sequences_comp>
+
+    <div (click)='showMenu()' class="show" #show> Show Menu</div>
+
+    <div class="upper-bar">
+        <div class="goBack" (click)='navigateBack()'>
+            <img src='../assets/icons/chevron-back-outline.svg'>
+            <h5>go back to the overview page</h5>
+        </div>
+
+        <div class="switch-cont">
+            <div class="switch-button"><span class="active" #active></span>
+                <button class="switch-button-case left active-case" #switchleft (click)='switchLeft()'>Table</button>
+                <button class="switch-button-case right" #switchright (click)='switchRight()' >List</button>
+            </div>
+        </div>
+    </div>
+
+<p>Click on the headers to filter by field</p>
+    <div class="central-table" [ngSwitch]="viewType">
+        <div *ngSwitchCase="2" >
+
+            <table class="header">
+                <thead>
+                    <tr>
+                        <th (click)='sortBy("name")'>Image</th>
+                        <th (click)='sortBy("name")'>Category</th>
+                        <th (click)='sortBy("loss")'>Loss</th>
+                        <th (click)='sortBy("loss")'> Status</th>
+                        <th (click)='sortBy("checked")'>Marked</th>
+                    </tr>
+                </thead>
+            </table>
+
+            <div class="scroll_table" id='table'>
+                <table >
+                    <tbody >
+                        <tr *ngFor="let data of dataset">
+                            <td (click)='openImage(data)'><a>{{data[1].img}}</a></td>
+                            <td>{{data[1].category}}</td>
+                            <td>{{ data[3]}}</td>
+                            <td class="success" *ngIf='0.05>=data[0].loss - data[1].loss'><b>Passed</b></td>
+                            <td class="failure" *ngIf='data[0].loss - data[1].loss>0.05'><b>Failed</b></td>
+                            <td><vaadin-checkbox (change)='data[2]=!data[2]' [checked]='data[2]' ></vaadin-checkbox> 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="grid" *ngSwitchCase="1">
+            <div class="category" *ngFor="let category of category_set">
+                <div class="categ-head">
+
+                    <div class="categ-title">
+                        <h3>{{category[0].title}} test</h3>
+                    </div>
+                    
+                    <div class="categ-stats">
+                        <h4>Accuracy Loss: <span [class.failure]='category[0].original - category[0].modified >0.05' [class.success]='0.05 > category[0].original - category[0].modified' >{{round_loss(category[0].original , category[0].modified)}}</span> ({{category[0].original}} / {{category[0].modified}})</h4>
+                    </div>
+                </div>
+
+                <div class="categ-img-list" >
+                    <div class="categ-img" *ngFor="let data of category[1]" >
+                        <img src="{{prefix+data[1].img}}" (click)='openImage(data)' >
+
+                        <div class="badge badge-succ"  *ngIf="0.05>=data[0].loss - data[1].loss" >
+                            <img src='../assets/icons/checkmark-done-outline.svg'>
+                        </div>
+
+                        <div class="badge badge-fail"  *ngIf="data[0].loss - data[1].loss>0.05" >
+                            <img src='../assets/icons/close-outline.svg'>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+ <div class="image-editor-bg" *ngIf="showImage" id='image-editor' (click)='closeEditor($event)'>
+    
+    <h4 id='image-editor'>Click everywhere on the background to close</h4>
+
+    <div class="image-editor-cont">
+        <div>
+            <h2>Original</h2>
+
+            <div class="left-img-cont">
+                <img src="{{prefix + original_data.img}}">
+            </div>
+            <div class="img-desc">
+
+                <div class="options">
+                    <p>Name: <b>{{original_data.img}} </b></p> 
+                    <p>Loss: <b>{{original_data.loss}}</b></p> 
+                </div>
+
+                <div class="download">
+                    <a href="{{prefix + original_data.img}}" download>
+                        <div class="dwn-btn">DOWNLOAD </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2>Modified</h2>
+
+            <div class="right-img-cont">
+                <img src="{{prefix + modified_data.img}}">
+            </div>
+
+            <div class="img-desc">
+                <div class="options">
+                    <p>Name: <b>{{modified_data.img}}</b></p> 
+                    <p>Loss: <b>{{modified_data.loss}}</b></p> 
+                </div>
+
+                <div class="download">
+                    <a href="{{prefix + modified_data.img}}" download>
+                        <div class="dwn-btn">DOWNLOAD </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

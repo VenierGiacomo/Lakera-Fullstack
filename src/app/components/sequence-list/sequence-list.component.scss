@@ -1,0 +1,255 @@
+@use 'src/assets/variables' as color;
+.dashboard{
+    padding: 0px 40px;
+}
+
+/// table
+.central-table{
+    width: 100%;
+    margin: 10px 0;
+    height: calc(100vh - 130px);
+    text-align: left;
+    display: inline-block;
+    top:0px;
+    background: white;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border-radius: 10px;    
+    position: relative;
+    overflow: hidden;
+}
+
+thead, tbody, table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.header{
+    width: 100%;
+    height: 50px;
+}
+
+.scroll_table{
+    max-height: calc(100vh - 180px);
+    overflow: scroll;
+}
+
+thead{
+    color: color.$txt-primary;
+    background-color: color.$bg-primary;
+    height: 40px;
+    padding: 10px ;
+}
+
+th, td{
+    position: relative;
+    text-align: center;
+}
+
+th{
+    font-size: 15px
+}
+
+
+td{
+    padding:10px auto;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 18px;
+    height: 50px;
+    border-bottom: solid 1px #00000022;
+}
+
+td:nth-child(1), th:nth-child(1){
+    width: 24%;
+}
+td:nth-child(2), th:nth-child(2){
+    width: 21%;
+}
+td:nth-child(3), th:nth-child(3), td:nth-child(4), th:nth-child(4), td:nth-child(5), th:nth-child(5){
+    width: 15%;
+}
+
+td:nth-child(1),td:nth-child(2),td:nth-child(3),td:nth-child(4){
+    border-right: solid 1px #00000022;
+}
+th:nth-child(1),th:nth-child(2),th:nth-child(3),th:nth-child(4){
+        border-right: solid 1px #fff;
+}
+
+
+///// images list
+
+.grid{
+    overflow-y: scroll;
+    height: 100%;
+}
+
+ h3, h4 {
+    font-family: 'Inter', sans-serif;
+}
+
+.category{
+    overflow-y: scroll;
+    width: 100%;
+    height: 250px;
+    display: block;
+    .categ-head{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .categ-title{
+        margin: 20px 0;
+        padding-left: 30px;
+        text-align: left;
+    }
+    .categ-stats{
+        margin: 20px 0;
+        text-align: center;
+    }
+    .categ-img-list{
+        width: 100%;
+        padding: 0px 20px;
+        white-space: nowrap;
+        position: relative;
+        display: block;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        .categ-img{
+            position: relative;
+            margin: 0px 10px 20px ;
+            display: inline-block;
+            width: 190px;
+            height: 140px;
+            border-radius: 7px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px 2px #00000022;
+            img{
+                object-fit: cover;
+                width: 100%;
+            }
+            .badge{
+                position: absolute;
+                display: block;
+                width:30px;
+                height: 30px;
+                right:8px;
+                bottom: 8px;
+                border-radius: 50%;
+                box-shadow: 0px 0px 10px 2px #00000022;
+                z-index: 2;
+            }
+            .badge-succ{
+                background-color: color.$txt-success;
+            }
+            .badge-fail{
+                background-color: color.$txt-failure;
+            }
+        }
+    }
+}
+
+.show{
+    visibility: hidden;
+    text-align: left;
+    line-height: 9px;
+    margin-top: 10px;
+    color: color.$txt-terciary;
+    font-size: 9px;
+    animation-duration: 400ms;
+    transition-duration: 400ms;
+    cursor: pointer;
+}
+
+
+///// switch
+
+.switch-cont{
+    position: relative;
+    width: 200px;
+}
+ 
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.switch-button{
+	width: 200px;
+	height: 40px;
+	text-align: center;
+    border-radius: 5px;
+    overflow: hidden;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate3D(-50%, -50%, 0);
+	will-change: transform;
+	z-index: 1 !important;
+	cursor: pointer;
+	transition: .3s ease all;
+	border: 1px solid grey;
+	&-case{
+		display: inline-block;
+		background: none;
+		width: 49%;
+		height: 100%;
+		color: grey;
+		position: relative;
+		border: none;
+		transition: .3s ease all;
+		text-transform: uppercase;
+		letter-spacing: 5px;
+		padding-bottom: 1px;
+		&:hover{
+			color: grey;
+			cursor: pointer;
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+	.active {
+		color: color.$txt-primary;
+		background-color: color.$bg-primary;
+		position: absolute;
+        border-radius: 5px;
+        overflow: hidden;
+		left: 0;
+		top: 0;
+		width: 50%;
+		height: 100%;
+		z-index: -1;
+		transition: .3s ease-out all;
+		&-case{
+			color: color.$txt-primary;
+		}
+	}
+}
+
+.signature {
+	position: fixed;
+    font-family:  sans-serif;
+	font-weight: 100;
+	bottom: 10px;
+	left: 0;
+	letter-spacing: 4px;
+	font-size: 10px;
+	width: 100vw;
+    text-align: center;
+     color: grey;
+	text-transform: uppercase;
+    text-decoration: none;
+}
+
+.upper-bar{
+    display: grid;
+    grid-template-columns: 8fr 1fr;
+}
+
+p{
+    line-height:11px;
+    height: 11px;
+    font-size: 11px;
+    font-weight: 300;
+}

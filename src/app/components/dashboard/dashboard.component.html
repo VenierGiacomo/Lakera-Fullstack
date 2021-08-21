@@ -1,0 +1,53 @@
+<div class="dashboard" #dashboard >
+    <div (click)='showMenu()' class="show" #show> Show Menu</div>
+
+    <div class="goBack">
+        <img src='../assets/icons/chevron-back-outline.svg'>
+        <h5>go back to other tests</h5>
+    </div>
+
+    <div class="central-table">
+        <div class='informations'>
+            <h1>Standard Visual Transformations - Test</h1>
+            <h3>Status: <span class="failure">Failed</span></h3><br>
+            <h3>Description:</h3>
+            <p> This test passes if performance drops by less than 0.05.</p>
+            <button class="btn-primary uppercase" (click)='navigateToComparison()'>Learn More</button>      
+        </div>
+
+        <div class="chart-container">
+           <p> Move the mouse over the bars to read the precise numbers </p>
+           <div class="chart-cont">
+                <ngx-charts-bar-vertical
+                    [scheme]="colorScheme"
+                    [results]="cart_data"
+                    [gradient]="gradient"
+                    [xAxis]="showXAxis"
+                    [yAxis]="showYAxis"
+                    [legend]="showLegend"
+                    [showXAxisLabel]="showXAxisLabel"
+                    [showYAxisLabel]="showYAxisLabel"
+                    [xAxisLabel]="xAxisLabel"
+                    [yAxisLabel]="yAxisLabel"
+                >
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+
+        <div class="summary-table">
+            <h3>Summary</h3>
+            <div class="line"><h5>N. of sequeces:</h5> <p>500</p> </div>
+            <div class="line"><h5>Images per sequence:</h5> <p>15</p></div>
+            <div class="line"><h5>Avg. metric on  original seq:</h5> <p>0.95</p></div>
+            <div class="line"><h5>Avg. metric on  modified seq:</h5> <p>0.71</p></div>
+            <div class="line"><h5>Overall diff:</h5> <p class="failure">0.24</p></div>
+            <h3>Results</h3>
+            <div class="line"><h5>Brightness difference</h5>  <p class="success">0.02</p></div>
+            <div class="line"><h5>Contrast difference</h5>  <p class="failure">0.15</p></div>
+            <div class="line"><h5>MotionBlur difference</h5>  <p class="failure">0.33</p></div>
+            <div class="line"><h5>Glare difference</h5>  <p class="failure"> 0.25</p></div>
+            <div class="line"><h5>Rain difference</h5>  <p class="failure"> 0.09</p></div>
+        </div>
+    </div>
+</div>
+

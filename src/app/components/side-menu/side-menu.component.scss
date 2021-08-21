@@ -1,0 +1,94 @@
+@use 'src/assets/variables' as color;
+
+.menu{
+   
+    
+
+    width: 16vw;
+    padding: 0px 15px  ;
+    text-align: center;
+    overflow: hidden;
+    height: 100vh;
+    top: 0px;
+    position: relative;
+    display: inline-block;
+    background-color: color.$bg-primary;
+    animation-duration: 400ms;
+    transition-duration: 400ms;
+    .brand{
+        margin: 25px auto ;
+        img {
+            max-width: 11vw;
+        }
+    }
+}
+
+.menu-el{
+    margin: 50px auto;
+    height: 40px;
+    padding: 0px 10px;
+  
+    width: calc(16vw + 15px) ;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    color: color.$txt-terciary;
+    p{
+    text-align: left;
+    display: inline-block;
+    font-weight: 400;
+    margin: auto 10px;
+    }
+    div{
+        text-align: right;
+        img{
+       
+            display: inline-block;
+            object-fit: cover;
+            height: 20px;
+            margin: 10px;
+        }
+    }
+    
+}
+
+.active{
+    color: color.$txt-primary;
+    background-color: #1E1E29;
+}
+
+.powered{
+    position: absolute;
+    text-align: center;
+    bottom: 10px;
+    color: color.$txt-terciary;
+    height: 30px;
+    display: grid;
+    width: 16vw;
+
+    grid-template-columns: 1fr 1fr;
+    span{
+        padding-right: 10px;
+        text-align: right;
+        line-height: 30px;
+        font-size: 9px;
+        margin: 0px 10px;
+    }
+    img{
+        margin-top: 3px;
+        height: 16px;
+    }
+}
+
+.hide{
+    width: 16vw;
+    text-align: right;
+    line-height: 9px;
+    margin-top: 10px;
+    color: color.$txt-terciary;
+    font-size: 9px;
+    animation-duration: 400ms;
+    transition-duration: 400ms;
+    cursor: pointer;
+}
