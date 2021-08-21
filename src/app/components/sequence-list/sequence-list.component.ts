@@ -71,12 +71,14 @@ export class SequenceListComponent implements OnInit {
   // animation effects of hiding showing the menu
   showMenu(){
     this.show.emit(true)
+    this.sequences_comp.nativeElement.style.left = 'calc( 16vw - 80px)'
     this.sequences_comp.nativeElement.style.width = 'calc(84vw - 110px)'
     this.sequences_comp.nativeElement.style.padding = '0px 40px'
     this.show_btn.nativeElement.style.visibility = 'hidden'
   }
 
   fullscreen(){
+    this.sequences_comp.nativeElement.style.left = '0px'
     this.sequences_comp.nativeElement.style.width = 'calc(100vw - 82px)'
     this.sequences_comp.nativeElement.style.padding = '20px 40px'
     this.show_btn.nativeElement.style.visibility = 'visible'

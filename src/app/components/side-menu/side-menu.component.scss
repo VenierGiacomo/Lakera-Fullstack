@@ -1,16 +1,14 @@
 @use 'src/assets/variables' as color;
 
 .menu{
-   
-    
-
     width: 16vw;
     padding: 0px 15px  ;
     text-align: center;
     overflow: hidden;
     height: 100vh;
     top: 0px;
-    position: relative;
+    left: 0px;
+    position: absolute;
     display: inline-block;
     background-color: color.$bg-primary;
     animation-duration: 400ms;

@@ -99,12 +99,14 @@ export class DashboardComponent implements OnInit {
 
   showMenu(){
     this.show.emit(true)
+    this.dashboard.nativeElement.style.left = 'calc( 16vw - 80px)'
     this.dashboard.nativeElement.style.width = 'calc(84vw - 110px)'
     this.dashboard.nativeElement.style.padding = '0px 40px'
     this.show_btn.nativeElement.style.visibility = 'hidden'
   }
 
   fullscreen(){
+    this.dashboard.nativeElement.style.left = '0px'
     this.dashboard.nativeElement.style.width = 'calc(100vw - 82px)'
     this.dashboard.nativeElement.style.padding = '20px 40px'
     this.show_btn.nativeElement.style.visibility = 'visible'
